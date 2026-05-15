@@ -64,13 +64,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
   background-image:radial-gradient(circle,white 1.5px,transparent 1.5px);background-size:26px 26px;}
 .hero-petals{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 @keyframes fall{0%{opacity:0.55;transform:translateY(-20px) rotate(0deg);}100%{opacity:0;transform:translateY(110vh) rotate(360deg);}}
-.hero-logo{margin-bottom:1.8rem;animation:fadeD 0.8s ease both;}
-.hero-logo img{height:clamp(60px,12vw,100px);width:auto;
-  filter:drop-shadow(0 2px 12px rgba(255,255,255,0.5));opacity:1;}
-.hero-title{font-family:'Noto Serif JP',serif;font-weight:300;
-  font-size:clamp(32px,7vw,52px);color:white;line-height:1.4;
-  margin-bottom:0.9rem;text-shadow:0 2px 16px rgba(160,70,50,0.2);
-  animation:fadeD 0.9s ease 0.1s both;}
+.hero-logo{margin-bottom:0.6rem;animation:fadeD 0.8s ease both;}
+.hero-brand{
+  font-family:'Noto Serif JP',serif;font-weight:700;
+  font-size:clamp(13px,2.8vw,20px);color:rgba(255,255,255,0.95);
+  letter-spacing:6px;text-transform:uppercase;
+  text-shadow:0 2px 8px rgba(180,60,80,0.2);
+}
+.hero-title{
+  font-family:'Noto Serif JP',serif;font-weight:700;
+  font-size:clamp(34px,7.5vw,58px);color:white;line-height:1.35;
+  margin-bottom:0.6rem;
+  text-shadow:0 2px 24px rgba(220,120,140,0.3);
+  letter-spacing:0.05em;
+  animation:fadeD 0.9s ease 0.1s both;
+}
+.hero-title-en{
+  font-family:'Noto Serif JP',serif;font-weight:300;
+  font-size:clamp(13px,2.5vw,18px);
+  color:rgba(255,255,255,0.75);
+  letter-spacing:3px;
+  margin-bottom:1.4rem;
+  animation:fadeD 0.95s ease 0.15s both;
+}
 .hero-catch{font-size:clamp(12px,2.5vw,15px);color:rgba(255,255,255,0.92);
   letter-spacing:2px;margin-bottom:2.5rem;
   font-family:'Noto Serif JP',serif;font-weight:300;animation:fadeD 1s ease 0.2s both;}
@@ -231,11 +247,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 .clbl{font-size:10px;color:var(--tl);letter-spacing:1px;margin-bottom:4px;}
 .cval{font-size:13px;color:var(--td);font-weight:500;}
 .csub{font-size:11px;color:var(--tl);margin-top:2px;}
-.sns-row{display:flex;justify-content:center;gap:10px;margin-top:1.5rem;flex-wrap:wrap;}
-.sns-btn{background:white;border:0.5px solid var(--s6);border-radius:50px;padding:8px 20px;
-  font-size:12px;color:var(--tm);cursor:pointer;transition:background 0.2s;
-  font-family:'Zen Kaku Gothic New',sans-serif;text-decoration:none;display:inline-block;}
-.sns-btn:hover{background:var(--s4);border-color:var(--s1);color:var(--sd);}
+.sns-row{display:flex;justify-content:center;gap:12px;margin-top:1.5rem;flex-wrap:wrap;}
+.sns-btn{display:inline-flex;align-items:center;gap:8px;
+  border:none;border-radius:50px;padding:10px 20px;
+  font-size:13px;font-weight:500;cursor:pointer;
+  font-family:'Zen Kaku Gothic New',sans-serif;text-decoration:none;
+  transition:transform 0.2s,box-shadow 0.2s;letter-spacing:0.5px;}
+.sns-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+.sns-instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;}
+.sns-facebook{background:#1877f2;color:white;}
+.sns-line{background:#06c755;color:white;}
+.sns-tiktok{background:#010101;color:white;}
 
 /* FOOTER */
 footer{background:var(--td);color:rgba(255,255,255,0.55);text-align:center;
@@ -291,9 +313,7 @@ footer strong{color:white;display:block;margin-bottom:6px;
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="logo.png" alt="Emily's Nursery"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-    <span class="nav-logo-text" style="display:none">Emily's Nursery</span>
+    <span class="nav-logo-text">Emily's Nursery</span>
   </div>
   <ul class="nav-links">
     <li><a href="#philosophy">理念</a></li>
@@ -322,11 +342,10 @@ footer strong{color:white;display:block;margin-bottom:6px;
   <div class="hero-dots"></div>
   <div class="hero-petals" id="petals"></div>
   <div class="hero-logo">
-    <img src="logo.png" alt="Emily's Nursery"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <p style="display:none;font-family:'Noto Serif JP',serif;font-size:clamp(18px,4vw,24px);color:white;letter-spacing:2px;">Emily's Nursery</p>
+    <p class="hero-brand">Emily's Nursery</p>
   </div>
   <h1 class="hero-title">助産師さんの保育園</h1>
+  <p class="hero-title-en">A Nursery Run by Midwives</p>
   <p class="hero-catch">すべての命に意味がある ── 自己肯定感を育む保育</p>
   <p class="hero-en">Hands-Free Childcare<br><span>No bags. No stress. Just drop off your Baby.</span></p>
   <div class="hero-cta">
@@ -607,17 +626,28 @@ footer strong{color:white;display:block;margin-bottom:6px;
     </div>
     <button class="btn-sd" onclick="window.open('https://www.yuraichatan.com/emilys-nursery','_blank')">公式サイトへ →</button>
     <div class="sns-row">
-      <a class="sns-btn" href="https://www.tiktok.com/@emilysnursery1138" target="_blank" rel="noopener">TikTok</a>
-      <a class="sns-btn" href="http://m.facebook.com/yurai1138" target="_blank" rel="noopener">Facebook</a>
-      <a class="sns-btn" href="http://line.me/R/ti/p/%40lef4724d" target="_blank" rel="noopener">LINE</a>
-      <a class="sns-btn" href="http://instagram.com/yurai_babykidsroom" target="_blank" rel="noopener">Instagram</a>
+      <a class="sns-btn sns-instagram" href="http://instagram.com/yurai_babykidsroom" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a class="sns-btn sns-facebook" href="http://m.facebook.com/yurai1138" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="sns-btn sns-line" href="http://line.me/R/ti/p/%40lef4724d" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE
+      </a>
+      <a class="sns-btn sns-tiktok" href="https://www.tiktok.com/@emilysnursery1138" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        TikTok
+      </a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <img class="footer-logo" src="logo.png" alt="Emily's Nursery" onerror="this.style.display='none'">
   <strong>Emily's Nursery</strong>
   〒904-0114 沖縄県中頭郡北谷町字港 8-10 ソフィスビル 2F<br>
   一般社団法人ゆらい　TEL: 098-989-1001<br>
